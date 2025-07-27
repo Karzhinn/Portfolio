@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects | Karzhin Kamal</title>
+  <script>
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  </script>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/styleProjects.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+</head>
+
+<body>
+  <div class="scroll-indicator">
+    <div class="scroll-bubble active"></div>
+    <div class="scroll-bubble"></div>
+    <div class="scroll-bubble"></div>
+  </div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="aboutme.html">About Me</a></li>
+        <li>
+          <button onclick="toggleTheme()" class="icon-btn" aria-label="Toggle Theme">
+            <span class="material-symbols-outlined theme-icon">light_mode</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="projects-fullscreen">
+    <section class="project-screen" id="section-1" style="--bg: #1a1a1a;">
+      <div class="project-content">
+        <h1>MindSpace</h1>
+        <p>Mental Health Services and Support; A Mobile Application Platform. Graduation project, programmed in Dart and designed to connect users to therapists and engage in text based sessions.</p>
+        <div class="tech-icons">
+          <img src="assets/Flutter.png" alt="Flutter" title="Flutter" />
+          <img src="assets/Dart.png" alt="Dart" title="Dart" />
+          <img src="assets/Firebase.png" alt="Firebase" title="Firebase" />
+        </div>
+      </div>
+    </section>
+
+    <section class="project-screen" id="section-2" style="--bg: #202020;">
+      <div class="project-content">
+        <h1>Document Management System - Internship at Kurdistan Parliament</h1>
+        <p>Document management web application designed to automate and enhance incoming and outgoing requests and share data between different roles.</p>
+        <div class="tech-icons">
+          <img src="assets/Java.png" alt="Java" />
+          <img src="assets/Spring.png" alt="springboot" />
+          <img src="assets/PostgresSQL.png" alt="PostgresSQL">
+          <img src="assets/thymeleaf.png" alt="thymeleaf">
+          <img src="assets/CSS3.png" alt="CSS" />
+          <img src="assets/HTML5.png" alt="HTML">
+        </div>
+      </div>
+    </section>
+    
+    <section class="project-screen" id="section-3" style="--bg: #181818;">
+      <div class="project-content">
+        <h1>Moovie</h1>
+        <p>Movie watch-listing and rating website using TMDB Api, university web development project.</p>
+        <div class="tech-icons">
+          <img src="assets/HTML5.png" alt="HTML" />
+          <img src="assets/CSS3.png" alt="CSS" />
+          <img src="assets/PHP.png" alt="PHP" />
+          <img src="assets/JavaScript.png" alt="JavaScript">
+          <img src="assets/MySQL.png" alt="MySQL">
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <script>
+    const sections = document.querySelectorAll('.project-screen');
+    const bubbles = document.querySelectorAll('.scroll-bubble');
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const index = [...sections].indexOf(entry.target);
+            bubbles.forEach((b, i) => b.classList.toggle('active', i === index));
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

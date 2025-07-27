@@ -1,0 +1,204 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: 'Montserrat', sans-serif;
+  scroll-behavior: smooth;
+  background-color: #000;
+  color: #fff;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  z-index: 10;
+}
+
+nav .logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  color: #00ffd5;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.hero {
+  height: 100vh;
+  background-size: 80%;
+  background-position: center center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  color: #00ffd5;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+}
+
+.cta-buttons {
+  margin-top: 2rem;
+}
+
+.btn {
+  padding: 0.8rem 1.5rem;
+  margin: 0 0.5rem;
+  background-color: #00ffd5;
+  border: none;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.btn.outline {
+  background: transparent;
+  border: 2px solid #00ffd5;
+  color: #00ffd5;
+}
+
+.btn:hover {
+  background-color: #00ccaa;
+  color: #000;
+}
+
+/* Parallax Sections */
+.flavor-screen {
+  height: 100vh;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 80%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  /* Remove background-attachment fixed to avoid mobile issues */
+  background-attachment: scroll;
+}
+
+.flavor-info {
+  background-color: rgba(0,0,0,0.5);
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 600px;
+}
+
+.flavor-info h2 {
+  font-size: 3rem;
+  color: #00ffd5;
+}
+
+.flavor-info p {
+  font-size: 1.2rem;
+  color: #fff;
+  margin-top: 1rem;
+}
+
+.join-section {
+  padding: 5rem 2rem;
+  background: #111;
+  text-align: center;
+}
+
+.join-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #00ffd5;
+}
+
+.join-section form {
+  margin-top: 2rem;
+}
+
+.join-section input {
+  padding: 0.8rem;
+  width: 300px;
+  max-width: 80%;
+  border: none;
+  border-radius: 4px;
+  margin-right: 1rem;
+}
+
+.join-section button {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #00ffd5;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+footer {
+  background: #000;
+  text-align: center;
+  padding: 2rem 1rem;
+  color: #888;
+}
+
+footer .socials {
+  margin-top: 1rem;
+}
+
+footer .socials a {
+  margin: 0 1rem;
+  color: #00ffd5;
+  text-decoration: none;
+}
+
+/* Fade-up animation */
+.js-observed {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease-out;
+}
+
+.js-observed.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

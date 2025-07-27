@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zero® | No Sugar. No Apologies.</title>
+  <link rel="stylesheet" href="css/example1.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Montserrat&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <nav>
+    <div class="logo">ZERO®</div>
+    <ul>
+      <li><a href="#flavors">Flavors</a></li>
+      <li><a href="#join">Join</a></li>
+      <li><a href="#">Buy</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero parallax" style="background-image: url('zero/zero.png');">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>ZERO®</h1>
+      <p>No Sugar. No Apologies.</p>
+      <div class="cta-buttons">
+        <a href="#flavors" class="btn">Explore Flavors</a>
+        <a href="#join" class="btn outline">Join the Movement</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="flavors">
+    <div class="flavor-screen parallax js-observed" style="background-image: url('zero/electric\ citrus.png');">
+      <div class="flavor-info">
+        <h2>Electric Citrus</h2>
+        <p>Taste the Voltage.</p>
+      </div>
+    </div>
+
+    <div class="flavor-screen parallax js-observed" style="background-image: url('zero/melon.png');">
+      <div class="flavor-info">
+        <h2>Solar Melon</h2>
+        <p>Sun-charged refreshment.</p>
+      </div>
+    </div>
+
+    <div class="flavor-screen parallax js-observed" style="background-image: url('zero/actic\ berry.png');">
+      <div class="flavor-info">
+        <h2>Arctic Berry</h2>
+        <p>Cooler than ice.</p>
+      </div>
+    </div>
+
+    <div class="flavor-screen parallax js-observed" style="background-image: url('zero/sealth\ cola.png');">
+      <div class="flavor-info">
+        <h2>Stealth Cola</h2>
+        <p>Dark. Smooth. Unexpected.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="join" class="join-section js-observed">
+    <h2>Join the Movement</h2>
+    <p>Get updates, drops, and exclusive access.</p>
+    <form>
+      <input type="email" placeholder="Enter your email" required />
+      <button type="submit">Join Now</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 Zero Beverages™ | No Sugar. No Apologies.</p>
+    <div class="socials">
+      <a href="#">Instagram</a>
+      <a href="#">X</a>
+      <a href="#">TikTok</a>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.js-observed').forEach(section => {
+      observer.observe(section);
+    });
+
+    // Parallax scrolling effect:
+    window.addEventListener('scroll', () => {
+      document.querySelectorAll('.parallax').forEach(el => {
+        const speed = 0.5; // Adjust parallax speed here
+        const offset = window.pageYOffset;
+        const top = el.offsetTop;
+        const height = el.offsetHeight;
+        const windowHeight = window.innerHeight;
+
+        if (offset + windowHeight > top && offset < top + height) {
+          const yPos = (offset - top) * speed;
+          el.style.backgroundPosition = `center ${yPos}px`;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
