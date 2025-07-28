@@ -12,6 +12,30 @@
   <link rel="stylesheet" href="css/styleProjects.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+  <style>
+    .scroll-indicator.horizontal-indicator {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 1000;
+    }
+
+    .scroll-bubble {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--text-color);
+      opacity: 0.4;
+      transition: opacity 0.3s ease;
+    }
+
+    .scroll-bubble.active {
+      opacity: 1;
+    }
+  </style>
 </head>
 <body>
   <nav class="navbar">
@@ -34,15 +58,13 @@
   </div>
 
   <main class="projects-fullscreen">
-    <!-- Empty landing screen for scroll positioning -->
     <section class="project-screen landing-screen" id="landing"></section>
-
 
     <section class="project-screen" id="education" style="--bg: #181818">
       <div class="project-content">
         <h2>University of Kurdistan Hewler</h2>
         <div class="info-list">
-        <p>BSc. Computer Science</p>
+          <p>BSc. Computer Science</p>
         </div>
       </div>
     </section>
@@ -60,15 +82,13 @@
           <div class="icon-item"><img src="assets/JavaScript.png" alt="JavaScript"><span>JavaScript</span></div>
           <div class="icon-item"><img src="assets/Dart.png" alt="Dart"><span>Dart</span></div>
           <div class="icon-item"><img src="assets/PHP.png" alt="PHP"><span>PHP</span></div>
-          
         </div>
-      <h2>-</h2>
+        <h2>-</h2>
         <div class="icon-grid">
           <div class="icon-item"><img src="assets/Firebase.png" alt="Firebase"><span>Firebase</span></div>
           <div class="icon-item"><img src="assets/MySQL.png" alt="MySQL"><span>MySQL</span></div>
           <div class="icon-item"><img src="assets/PostgresSQL.png" alt="PostgresSQL"><span>PostgresSQL</span></div>
           <div class="icon-item"><img src="assets/thymeleaf.png" alt="thymeleaf"><span>Thymeleaf</span></div>
-
         </div>
       </div>
     </section>
@@ -76,7 +96,7 @@
     <section class="project-screen" id="software" style="--bg: #202020">
       <div class="project-content">
         <div class="info-list">
-          <p>Familiar with Figma for UI/UX design, Git & <a href="https://github.com/Karzhinn" >GitHub</a> for version control, Firebase for backend integration, and VsCode for fast development using extensions and integrated terminals. Intermediate CISCO experince.</p>
+          <p>Familiar with Figma for UI/UX design, Git & <a href="https://github.com/Karzhinn" >GitHub</a> for version control, Firebase for backend integration, and VsCode for fast development using extensions and integrated terminals. Intermediate CISCO experience.</p>
         </div>
       </div>
     </section>
@@ -97,32 +117,52 @@
       </div>
     </section>
 
-    <!-- Nav Overlay -->
-    <section id="final" class="nav-overlay" id="nav-overlay">
+    <section id="final" class="project-screen nav-overlay" style="--bg: #1a1a1a; min-height: 100vh; margin-bottom: 200px;">
+
       <ul class="nav-overlay-links fade-up">
         <li><a href="aboutme.html">About Me</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li><a href="#top">Back to Top</a></li>
       </ul>
     </section>
-
   </main>
 
+  <!-- Horizontal Scroll Bubbles -->
+  <div class="scroll-indicator horizontal-indicator">
+    <div class="scroll-bubble active"></div>
+    <div class="scroll-bubble"></div>
+    <div class="scroll-bubble"></div>
+    <div class="scroll-bubble"></div>
+    <div class="scroll-bubble"></div>
+    <div class="scroll-bubble"></div>
+    <div class="scroll-bubble"></div>
+  </div>
+
+  <!-- Scroll Sticky Title -->
   <script>
-    // Stick fixed title below navbar after scrolling past landing screen
     const fixedTitleWrapper = document.querySelector('.fixed-title-wrapper');
     const landingScreen = document.querySelector('.landing-screen');
-
     window.addEventListener('scroll', () => {
       const landingBottom = landingScreen.getBoundingClientRect().bottom;
-      if (landingBottom <= 80) { // 80px is navbar height + margin
-        fixedTitleWrapper.classList.add('stick-top');
-      } else {
-        fixedTitleWrapper.classList.remove('stick-top');
-      }
+      fixedTitleWrapper.classList.toggle('stick-top', landingBottom <= 80);
     });
+  </script>
 
-    // Your existing toggleTheme function should be in script.js
+  <!-- Horizontal Scroll Bubble Logic -->
+  <script>
+    const sections = document.querySelectorAll('.project-screen');
+    const bubbles = document.querySelectorAll('.horizontal-indicator .scroll-bubble');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const index = [...sections].indexOf(entry.target);
+          bubbles.forEach((b, i) => b.classList.toggle('active', i === index));
+        }
+      });
+    }, { threshold: 0.3 });
+
+    sections.forEach(section => observer.observe(section));
   </script>
 
   <script src="script.js"></script>

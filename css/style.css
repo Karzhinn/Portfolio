@@ -545,7 +545,12 @@ main {
     width: 36px;
     height: 36px;
   }
-
+  .info-list {
+    text-align: center !important;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
   .info-list p {
     font-size: 1rem;
     padding: 0 0.5rem;
@@ -553,5 +558,44 @@ main {
 
   #fixed-title {
     font-size: clamp(1.5rem, 8vw, 2.5rem);
+  }
+}
+.scroll-indicator.horizontal-indicator {
+  position: fixed !important;
+  bottom: -150px !important; /* This controls vertical position */
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 12px !important;
+  z-index: 10000 !important;
+  pointer-events: none !important;
+}
+
+
+.scroll-bubble {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--border-color);
+  opacity: 0.4;
+  transition: all 0.3s ease;
+}
+
+.scroll-bubble.active {
+  opacity: 1;
+  background-color: var(--accent-color);
+}
+@media (max-width: 600px) {
+  .horizontal-indicator {
+    bottom: 24px; /* Slightly closer to bottom on smaller screens */
+    gap: 8px; /* Less spacing between bubbles on small screens */
+  }
+
+  .scroll-bubble {
+    width: 8px;
+    height: 8px;
   }
 }
