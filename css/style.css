@@ -546,7 +546,7 @@ main {
     height: 36px;
   }
   .info-list {
-    /* text-align: center !important; */
+    text-align: center !important;
     padding-left: 1rem;
     padding-right: 1rem;
   }
@@ -554,9 +554,6 @@ main {
   .info-list p {
     font-size: 1rem;
     padding: 0 0.5rem;
-  }
-  #degree {
-    text-align: center !important;
   }
 
   #fixed-title {
