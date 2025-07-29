@@ -89,6 +89,7 @@
           <div class="icon-item"><img src="assets/MySQL.png" alt="MySQL"><span>MySQL</span></div>
           <div class="icon-item"><img src="assets/PostgresSQL.png" alt="PostgresSQL"><span>PostgresSQL</span></div>
           <div class="icon-item"><img src="assets/thymeleaf.png" alt="thymeleaf"><span>Thymeleaf</span></div>
+          <div class="icon-item"><img src="assets/Ubuntu.png" alt="Ubuntu"><span>Ubuntu</span></div>
         </div>
       </div>
     </section>
@@ -96,7 +97,7 @@
     <section class="project-screen" id="software" style="--bg: #202020">
       <div class="project-content">
         <div class="info-list">
-          <p>Familiar with Figma for UI/UX design, Git & <a href="https://github.com/Karzhinn" >GitHub</a> for version control, Firebase for backend integration, and VsCode for fast development using extensions and integrated terminals. Intermediate CISCO experience.</p>
+          <p>Familiar with Figma for UI/UX design along with adobe creative suite softwares. Git & <a href="https://github.com/Karzhinn">GitHub</a> for version control, Intellij and VSCode for fast development and integrated terminals. Intermediate CISCO experience.</p>
         </div>
       </div>
     </section>
@@ -138,6 +139,9 @@
     <div class="scroll-bubble"></div>
   </div>
 
+<div id="scroll-prompt">Scroll down</div>
+
+
   <!-- Scroll Sticky Title -->
   <script>
     const fixedTitleWrapper = document.querySelector('.fixed-title-wrapper');
@@ -164,6 +168,42 @@
 
     sections.forEach(section => observer.observe(section));
   </script>
+
+  <script>
+  const scrollPrompt = document.getElementById('scroll-prompt');
+const landingSection = document.getElementById('landing');
+let scrollTimeout;
+
+function showScrollPrompt() {
+  scrollPrompt.style.display = 'flex';
+}
+
+function hideScrollPrompt() {
+  scrollPrompt.style.display = 'none';
+}
+
+window.addEventListener('scroll', () => {
+  hideScrollPrompt();
+
+  clearTimeout(scrollTimeout);
+  scrollTimeout = setTimeout(() => {
+    const rect = landingSection.getBoundingClientRect();
+    // Check if landing section is mostly visible in viewport
+    if (rect.top >= -50 && rect.bottom <= window.innerHeight + 50) {
+      showScrollPrompt();
+    }
+  }, 3000);
+});
+
+// On page load, check if landing section is visible before showing prompt
+scrollTimeout = setTimeout(() => {
+  const rect = landingSection.getBoundingClientRect();
+  if (rect.top >= -50 && rect.bottom <= window.innerHeight + 50) {
+    showScrollPrompt();
+  }
+}, 3000);
+
+</script>
 
   <script src="script.js"></script>
 </body>

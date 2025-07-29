@@ -546,7 +546,7 @@ main {
     height: 36px;
   }
   .info-list {
-    text-align: center !important;
+    /* text-align: center !important; */
     padding-left: 1rem;
     padding-right: 1rem;
   }
@@ -597,5 +597,28 @@ main {
   .scroll-bubble {
     width: 8px;
     height: 8px;
+  }
+}
+
+#scroll-prompt {
+  position: fixed;
+  bottom: 60px; /* Just below scroll bubbles */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.9rem;
+  color: var(--text-color, white);
+  opacity: 0.4;
+  animation: appear 0.8s ease forwards;
+  z-index: 9999;
+  pointer-events: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.4;
   }
 }
