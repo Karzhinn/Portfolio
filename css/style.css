@@ -626,15 +626,30 @@ main {
 @media (max-width: 600px) {
   #scroll-prompt {
     font-size: 0.8rem;
-    bottom: 95px;  /* closer to bottom on small screens */
-    opacity: 0.6;  /* a bit more visible */
+    bottom: 100px; /* Move above the scroll bubbles */
+    opacity: 0.6;
+    z-index: 9999;
+  }
+
+  .horizontal-indicator {
+    bottom: 40px;
+    gap: 8px;
+  }
+
+  .scroll-bubble {
+    width: 8px;
+    height: 8px;
   }
 }
 
 @media (max-width: 360px) {
   #scroll-prompt {
     font-size: 0.7rem;
-    bottom: 30px;
+    bottom: 75px; /* Slightly higher for very small screens */
     opacity: 0.7;
+  }
+
+  .horizontal-indicator {
+    bottom: 35px;
   }
 }
