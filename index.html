@@ -27,7 +27,7 @@
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      background-color: var(--text-color);
+      background-color: var(--border-color);
       opacity: 0.4;
       transition: opacity 0.3s ease;
     }
@@ -129,7 +129,7 @@
   </main>
 
   <!-- Horizontal Scroll Bubbles -->
-  <div class="scroll-indicator horizontal-indicator">
+  <div class="scroll-indicator">
     <div class="scroll-bubble active"></div>
     <div class="scroll-bubble"></div>
     <div class="scroll-bubble"></div>
@@ -155,7 +155,7 @@
   <!-- Horizontal Scroll Bubble Logic -->
   <script>
     const sections = document.querySelectorAll('.project-screen');
-    const bubbles = document.querySelectorAll('.horizontal-indicator .scroll-bubble');
+    const bubbles = document.querySelectorAll('.scroll-indicator .scroll-bubble');
 
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {

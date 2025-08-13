@@ -560,45 +560,50 @@ main {
     font-size: clamp(1.5rem, 8vw, 2.5rem);
   }
 }
-.scroll-indicator.horizontal-indicator {
+.scroll-indicator {
   position: fixed !important;
-  bottom: -150px !important; /* This controls vertical position */
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  display: flex !important;
-  flex-direction: row !important;
-  justify-content: center !important;
-  align-items: center !important;
-  gap: 12px !important;
-  z-index: 10000 !important;
-  pointer-events: none !important;
+  top: 50% !important;
+  right: max(12px, env(safe-area-inset-right)) !important;
+  left: auto !important;
+  bottom: auto !important;
+  transform: translateY(-50%) !important; /* keep the element’s center on the midpoint */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 1000;
+  padding-block: 6px; /* evens out visual center if a bubble scales */
 }
-
 
 .scroll-bubble {
   width: 12px;
   height: 12px;
+  background-color: var(--border-color, #ccc);
   border-radius: 50%;
-  background-color: var(--border-color);
-  opacity: 0.4;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  opacity: 0.6;
 }
 
+/* Active bubble */
 .scroll-bubble.active {
-  opacity: 1;
   background-color: var(--accent-color);
+  transform: scale(1.1);
+  transform-origin: center;
 }
-@media (max-width: 600px) {
-  .horizontal-indicator {
-    bottom: 24px; /* Slightly closer to bottom on smaller screens */
-    gap: 8px; /* Less spacing between bubbles on small screens */
-  }
 
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .scroll-indicator {
+    right: 10px; /* Pull closer to edge */
+    gap: 6px;
+  }
   .scroll-bubble {
     width: 8px;
     height: 8px;
   }
 }
+
 
 #scroll-prompt {
   position: fixed;
@@ -626,12 +631,12 @@ main {
 @media (max-width: 600px) {
   #scroll-prompt {
     font-size: 0.8rem;
-    bottom: 100px; /* Move above the scroll bubbles */
+    bottom: 130px; /* Move above the scroll bubbles */
     opacity: 0.6;
     z-index: 9999;
   }
 
-  .horizontal-indicator {
+  .scroll-indicator {
     bottom: 40px;
     gap: 8px;
   }
@@ -652,4 +657,11 @@ main {
   .horizontal-indicator {
     bottom: 35px;
   }
+}
+.scroll-indicator.horizontal-indicator {
+  left: auto !important;
+  bottom: auto !important;
+  transform: translateY(-50%) !important;
+  top: 50% !important;
+  right: max(12px, env(safe-area-inset-right)) !important;
 }
